@@ -16,6 +16,10 @@ func main() {
 	}
 }
 
+func (*CCHello) Name() string {
+	return "hello"
+}
+
 func (cc *CCHello) Init(stub shim.ChaincodeStubInterface) peer.Response {
 	fmt.Printf("start to instantiate chaincode %q\n", cc.Name())
 
@@ -45,10 +49,6 @@ func (cc *CCHello) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 		fmt.Printf("method %q is not supported yet\n", fun)
 		return shim.Error("unsupported method")
 	}
-}
-
-func (*CCHello) Name() string {
-	return "hello"
 }
 
 func query(stub shim.ChaincodeStubInterface, args []string) peer.Response {
